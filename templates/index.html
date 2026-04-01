@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Analyzer</title>
+</head>
+<body>
+
+<h1>🤖 AI Resume Analyzer</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="resume" required><br><br>
+
+    <textarea name="job_desc" placeholder="Paste Job Description" rows="6" cols="50"></textarea><br><br>
+
+    <button type="submit">Analyze</button>
+</form>
+
+{% if result %}
+<hr>
+
+<h2>📊 ATS Score: {{ result.score }}%</h2>
+
+<h3>✅ Your Skills:</h3>
+<p>{{ result.resume_skills }}</p>
+
+<h3>📌 Job Required Skills:</h3>
+<p>{{ result.job_skills }}</p>
+
+<h3>❌ Missing Skills:</h3>
+<p>{{ result.missing }}</p>
+
+{% endif %}
+
+</body>
+</html>
