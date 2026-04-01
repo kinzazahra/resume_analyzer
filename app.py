@@ -23,6 +23,10 @@ def home():
         resume_skills = extract_skills(text)
         job_skills = extract_skills(job_desc.lower())
 
+        # fallback if no skills found
+        if not job_skills:
+            job_skills = job_desc.lower().split()
+
         score = get_similarity(text, job_desc.lower())
 
         missing_skills = list(set(job_skills) - set(resume_skills))
